@@ -76,12 +76,14 @@ Y_M = 1
 for m in range(1,Y_len+1):
     if Y_min > (image[m][1]+(m-1)*2):#如果开头有对空的penalty
         X_min = image[m][1]+(m-1)*2
+        image[m][1]= image[m][1]+(m-1)*2
         Y_M = m
 X_min = image[1][1]
 X_N = 1
 for n in range(1,X_len+1):
     if X_min > (image[1][n] +(n-1)*2):
         X_min = image[1][n]+(n-1)*2
+        image[1][n]= image[1][n]+(n-1)*2
         X_N = n
 #得到最小的penalty        
 M = 1
@@ -107,7 +109,7 @@ while g < length:
     q3 = image[h+1][g+1]
     ww=G_min(q1,q2,q3) 
     if g==1 or h==1:  #如果是起始处，就要自己和下一个
-        if ww==q3:
+        if ww==q3 or image[h+1][g+1]== image[h][g]:
             print("%c,"%Rev(image[0][g]),end='')
             print("%c"%Rev(image[h][0]))
             print("%c,"%Rev(image[0][g+1]),end='')
